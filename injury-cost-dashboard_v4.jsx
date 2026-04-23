@@ -149,7 +149,7 @@ const TR = ({ label, value, color = "#fff" }) => (
 // ─── DISEASE BURDEN PANEL ─────────────────────────────────────────────────────
 
 function DiseasePanel() {
-  const [view, setView] = useState("snapshot");
+  const [view, setView] = useState("inflation");
   const [activeConds, setActiveConds] = useState(new Set(Object.keys(DISEASE_LABELS)));
 
   const toggleCond = key => {
@@ -181,7 +181,7 @@ function DiseasePanel() {
 
       {/* Sub-tabs */}
       <div style={{ display: "flex", marginBottom: 20 }}>
-        {[["snapshot", "2021 Snapshot"], ["trend", "Cost Trends 2000–2021"], ["inflation", "Cost Inflation"], ["broken", "⚠ The Broken System"]].map(([id, lbl], i, arr) => (
+        {[["inflation", "Cost Inflation"], ["snapshot", "2021 Snapshot"], ["trend", "Cost Trends 2000–2021"], ["broken", "⚠ The Broken System"]].map(([id, lbl], i, arr) => (
           <button key={id} className={`tab-btn${view === id ? " active" : ""}`}
             style={{ borderRadius: i === 0 ? "4px 0 0 4px" : i === arr.length - 1 ? "0 4px 4px 0" : "0", borderLeft: i > 0 ? "none" : undefined }}
             onClick={() => setView(id)}>{lbl}</button>
