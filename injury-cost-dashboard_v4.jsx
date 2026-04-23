@@ -108,9 +108,9 @@ const SHARED_CSS = `
   .back-btn:hover{color:#c0bfef;}
 `;
 
-// ─── INFLATION SCREEN ─────────────────────────────────────────────────────────
+// ─── MAIN SCREEN ──────────────────────────────────────────────────────────────
 
-function InflationScreen({ onContinue, onBack }) {
+function MainScreen({ onBack }) {
   return (
     <div style={{ minHeight: "100vh", background: "#09090f", color: "#e0dff5", fontFamily: "'DM Mono',monospace" }}>
       <style>{SHARED_CSS}</style>
@@ -252,42 +252,13 @@ function InflationScreen({ onContinue, onBack }) {
           })}
         </div>
 
-        {/* CTA to Broken System */}
-        <div style={{ textAlign: "center" }}>
-          <div style={{ fontSize: 10, color: "#5a58a0", textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: 12 }}>The question remains</div>
-          <div style={{ fontFamily: "'Syne',sans-serif", fontSize: "clamp(16px,2.5vw,24px)", color: "#c0bfef", fontWeight: 700, marginBottom: 28, maxWidth: 540, margin: "0 auto 28px" }}>
+        {/* ── Section divider: The Broken System ── */}
+        <div style={{ borderTop: "1px solid #1a1a2e", margin: "0 0 40px", paddingTop: 48, textAlign: "center" }}>
+          <div style={{ fontSize: 10, color: "#5a58a0", textTransform: "uppercase", letterSpacing: "0.2em", marginBottom: 14 }}>The question remains</div>
+          <div style={{ fontFamily: "'Syne',sans-serif", fontSize: "clamp(18px,3vw,28px)", color: "#fff", fontWeight: 700, lineHeight: 1.25, maxWidth: 640, margin: "0 auto" }}>
             Why does the US spend this much — and get <span style={{ color: "#e05c6f" }}>worse outcomes</span> than every peer nation?
           </div>
-          <button
-            onClick={onContinue}
-            onMouseEnter={e => { e.currentTarget.style.background = "#1e0d0d"; e.currentTarget.style.boxShadow = "0 0 28px rgba(224,92,111,.22)"; }}
-            onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.boxShadow = "none"; }}
-            style={{ background: "transparent", border: "1px solid #e05c6f", color: "#e05c6f", padding: "14px 44px", fontFamily: "'DM Mono',monospace", fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase", cursor: "pointer", borderRadius: 4, transition: "all .25s" }}
-          >
-            The Broken System →
-          </button>
         </div>
-      </div>
-
-      <div style={{ fontSize: 10, color: "#2a2a3a", textAlign: "center", paddingBottom: 16 }}>
-        Sources: BEA Health Care Satellite Account 2000–2021 · BLS CPI &amp; Wage Data
-      </div>
-    </div>
-  );
-}
-
-// ─── BROKEN SYSTEM SCREEN ─────────────────────────────────────────────────────
-
-function BrokenSystemScreen({ onBack }) {
-  return (
-    <div style={{ minHeight: "100vh", background: "#09090f", color: "#e0dff5", fontFamily: "'DM Mono',monospace" }}>
-      <style>{SHARED_CSS}</style>
-
-      <div style={{ padding: "20px 40px", borderBottom: "1px solid #1a1a2e" }}>
-        <button className="back-btn" onClick={onBack}>← Back to Cost Data</button>
-      </div>
-
-      <div style={{ padding: "40px 40px 64px" }}>
 
         {/* Thesis */}
         <div style={{
@@ -427,7 +398,7 @@ function BrokenSystemScreen({ onBack }) {
       </div>
 
       <div style={{ fontSize: 10, color: "#2a2a3a", textAlign: "center", paddingBottom: 16 }}>
-        Sources: BEA Health Care Satellite Account 2000–2021 · OECD Health Statistics 2022 · Richman et al. 2022 · Shrank et al. JAMA 2019 · Berwick et al. 2025
+        Sources: BEA Health Care Satellite Account 2000–2021 · BLS CPI &amp; Wage Data · OECD Health Statistics 2022 · Richman et al. 2022 · Shrank et al. JAMA 2019 · Berwick et al. 2025
       </div>
     </div>
   );
@@ -520,7 +491,6 @@ function LandingScreen({ onEnter }) {
 
 export default function App() {
   const [screen, setScreen] = useState("landing");
-  if (screen === "landing") return <LandingScreen onEnter={() => setScreen("inflation")} />;
-  if (screen === "broken") return <BrokenSystemScreen onBack={() => setScreen("inflation")} />;
-  return <InflationScreen onContinue={() => setScreen("broken")} onBack={() => setScreen("landing")} />;
+  if (screen === "landing") return <LandingScreen onEnter={() => setScreen("main")} />;
+  return <MainScreen onBack={() => setScreen("landing")} />;
 }
