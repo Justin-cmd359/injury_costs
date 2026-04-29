@@ -1,3 +1,8 @@
+.venv
 Personal_Project.docx
 Research
 data audit
+node_modules
+build
+package.json
+package-lock.json
