@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/injury_costs/static/js/main.b4e3b6fc.js",
+    "main.js": "/injury_costs/static/js/main.b05ee38c.js",
     "index.html": "/injury_costs/index.html",
-    "main.b4e3b6fc.js.map": "/injury_costs/static/js/main.b4e3b6fc.js.map"
+    "main.b05ee38c.js.map": "/injury_costs/static/js/main.b05ee38c.js.map"
   },
   "entrypoints": [
-    "static/js/main.b4e3b6fc.js"
+    "static/js/main.b05ee38c.js"
   ]
 }
